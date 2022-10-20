@@ -1,5 +1,5 @@
 class BaseTask:
-    def get_params(self):
+    def get_param_values(self):
         raise NotImplementedError("`get_params` function should be implemented by the subclass!")
 
     def run(self):
