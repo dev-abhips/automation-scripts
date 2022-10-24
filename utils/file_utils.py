@@ -49,15 +49,12 @@ class DocumentType(Enum):
     pdf = "pdf"
 
 
-
 class FileUtils:
     def copy_files_to_destination(self, from_dir: str, to_dir: str, file_type: FileType) -> bool:
         if not self.is_path_existing(from_dir):
             print(f"Couldn't find the directory `{from_dir}`!")
             return False
-        if not self.is_path_existing(to_dir):
-            print(f"Couldn't find the directory `{to_dir}`!")
-            return False
+        self.create_directory_if_not_existing(to_dir)
         if not isinstance(file_type, FileType):
             print(f"Wrong file_type {str(file_type)}")
             return False
@@ -70,11 +67,13 @@ class FileUtils:
         elif file_type == FileType.VIDEO:
             file_types = get_enum_values(VideoType)
 
-        print(f"\nCopying the files of the type `{file_type.name}` from `{from_dir}` to `{to_dir}`")
+        print(f"\nCopying the files of the type `{file_type.name}` from `{from_dir}` to `{to_dir}`\n")
         for file_name in os.listdir(from_dir):
-            f = os.path.join(from_dir, file_name)
-            if os.path.isfile(f) and self.check_file_type(file_name, file_types):
-                print(f)
+            old_f = os.path.join(from_dir, file_name)
+            new_f = os.path.join(to_dir, file_name)
+            if os.path.isfile(old_f) and self.check_file_type(file_name, file_types):
+                os.rename(old_f, new_f)
+                print(f"  - {old_f} --> {new_f}")
 
     def check_file_type(self, file_name: str, file_types: List) -> bool:
         for file_type in file_types:
@@ -83,4 +82,14 @@ class FileUtils:
         return False
 
     def is_path_existing(self, path: str) -> bool:
-        return True
+        return os.path.exists(path)
+
+    def create_directory_if_not_existing(self, path: str) -> bool:
+        if os.path.isfile(path):
+            print(f"`{path}` is not a directory but an existing file!!")
+            return False
+        if not os.path.isdir(path):
+            print(f"\nCreated the directory `{path}`.")
+            os.makedirs(path)
+            return True
+        return False

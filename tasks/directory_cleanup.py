@@ -9,13 +9,14 @@ class DirectoryCleanupTask(BaseTask):
         self.file_utils = FileUtils()
         self.video_dir = os.path.expanduser("~/Videos/temp")
         self.audio_dir = os.path.expanduser("~/Music/temp")
-        self.picture_dir = os.path.expanduser("~/Images/temp")
-        self.document_dir = os.path.expanduser("~/Images/temp")
+        self.picture_dir = os.path.expanduser("~/Pictures/temp")
+        self.document_dir = os.path.expanduser("~/Documents/temp")
 
 
     def get_param_values(self):
-        directory = input("Give the path from the home directory: ")
+        directory = input("\nGive the path from the home directory: ")
         self.from_dir = os.path.expanduser(f"~/{directory}")
+        print("\n")
 
     def run(self):
         self.get_param_values()
