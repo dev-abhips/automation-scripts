@@ -1,8 +1,8 @@
 from enum import Enum
 
-from tasks.base_task import BaseTask
-from tasks.directory_cleanup_task import DirectoryCleanupTask
-from tasks.duplicate_detector_task import DuplicateDetectorTask
+from tasks.base import BaseTask
+from tasks.directory_cleanup import DirectoryCleanupTask
+from tasks.duplicate_detector import DuplicateDetectorTask
 
 
 class TaskEntry(Enum):
