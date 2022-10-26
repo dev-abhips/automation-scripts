@@ -3,7 +3,7 @@ from enum import Enum
 import typer
 from tasks.duplicate_detector_task import DuplicateDetectorTask
 from tasks.directory_cleanup import DirectoryCleanupTask
-from functions import convert_string_to_sentence
+from utils.functions import convert_string_to_sentence
 
 
 class Choice(Enum):
