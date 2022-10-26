@@ -17,6 +17,7 @@ def get_menu() -> dict:
 def main() -> None:
     menu: dict = get_menu()
     choice: int = int(input("Enter the choice of action: "))
+    print("\n------------------------------")
     print(f"\nYou have chosen the task `{convert_string_to_sentence(menu.get(choice), '_')}`.")
     task = task_factory(choice)
     task.run()
