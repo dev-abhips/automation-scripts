@@ -1,6 +1,6 @@
 import os
 
-from base.task import BaseTask
+from tasks.base_task import BaseTask
 from utils.file_utils import FileType, FileUtils
 
 

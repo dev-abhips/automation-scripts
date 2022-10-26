@@ -1,6 +1,6 @@
 from enum import Enum
 
-from base.task import BaseTask
+from tasks.base_task import BaseTask
 from tasks.directory_cleanup import DirectoryCleanupTask
 from tasks.duplicate_detector_task import DuplicateDetectorTask
 
