@@ -10,3 +10,9 @@ def get_enum_values(enum_class: Enum) -> List:
 def get_enum_names(enum_class: Enum) -> List:
     assert issubclass(enum_class, Enum)
     return [enum_type.name for enum_type in enum_class]
+
+
+def convert_string_to_sentence(input: str, seperator: str) -> str:
+    assert input not None
+    assert seperator not None
+    return input.replace(seperator, ' ').capitalize()
