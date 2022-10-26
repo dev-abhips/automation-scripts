@@ -23,7 +23,7 @@ class Choice(Enum):
 def main() -> None:
     choices: dict = Choice.get_menu()
     choice: int = int(input("Enter the choice of action: "))
-    print(f"\nYou have chosen the task `{convert_string_to_sentence(choices.get(choice)), '_'}`.")
+    print(f"\nYou have chosen the task `{convert_string_to_sentence(choices.get(choice), '_')}`.")
     if choice == Choice.MANIPULATE_DUPLICATE.value:
         task = DuplicateDetectorTask()
     elif choice == Choice.CLEANUP_DIRECTORY.value:
