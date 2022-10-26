@@ -1,8 +1,8 @@
 from enum import Enum
 
-from tasks.base import BaseTask
-from tasks.directory_cleanup import DirectoryCleanupTask
-from tasks.duplicate_detector import DuplicateDetectorTask
+from .base import BaseTask
+from .directory_cleanup import DirectoryCleanupTask
+from .duplicate_detector import DuplicateDetectorTask
 
 
 class TaskEntry(Enum):
@@ -11,7 +11,7 @@ class TaskEntry(Enum):
 
 
 def task_factory(choice: int) -> BaseTask:
-    assert type(choice) is int
+    assert isinstance(choice, int)
     tasks = {
         TaskEntry.MANIPULATE_DUPLICATE.value: DuplicateDetectorTask,
         TaskEntry.CLEANUP_DIRECTORY.value: DirectoryCleanupTask

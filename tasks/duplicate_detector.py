@@ -1,4 +1,4 @@
-from tasks.base import BaseTask
+from .base import BaseTask
 
 
 class DuplicateDetectorTask(BaseTask):
