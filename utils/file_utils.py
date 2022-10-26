@@ -6,6 +6,7 @@ from utils.functions import get_enum_values
 
 class FileType(Enum):
     ALL = "all"
+    CODE = "code"
     IMAGE = "image"
     VIDEO = "video"
     AUDIO = "audio"
@@ -17,6 +18,7 @@ class ImageType(Enum):
     GIF = "gif"
     JPG = "jpg"
     JPEG = "jpeg"
+    WEBP = "webp"
 
 
 class AudioType(Enum):
@@ -31,22 +33,42 @@ class AudioType(Enum):
 class VideoType(Enum):
     MP4 = "mp4"
     MKV = "mkv"
+    MOV = "mov"
+    SRT = "srt" # subtitle file
     FLAC = "flac"
     THREEGP = "3gp"
+
 
 
 class DocumentType(Enum):
     DOC = "doc"
     DOCX = "docx"
-    xls = "XLS"
-    xlsx = "XLSX"
-    ppt = "PPT"
-    pptx = "PPTX"
-    odt = "ODT"
-    txt = "TXT"
-    md = "MD"
-    csv = "CSV"
-    pdf = "pdf"
+    XLS = "xls"
+    XLSX = "xlsx"
+    PPT = "ppt"
+    PPTX = "pptx"
+    OTP = "otp"
+    OTT = "ott"
+    ODS = "ods"
+    ODT = "odt"
+    OPT = "opt"
+    OST = "ost"
+    TXT = "txt"
+    OXT = "oxt"
+    MD = "md"
+    CSV = "csv"
+    PDF = "pdf"
+    MOBI = "mobi"
+    EPUB = "epub"
+
+
+
+class CodeType(Enum):
+    ISO = "iso"
+    DMG = "dmg"
+    XML = "xml"
+    JSON = "json"
+
 
 
 class FileUtils:
@@ -66,6 +88,10 @@ class FileUtils:
             file_types = get_enum_values(AudioType)
         elif file_type == FileType.VIDEO:
             file_types = get_enum_values(VideoType)
+        elif file_type == FileType.DOCUMENT:
+            file_types = get_enum_values(DocumentType)
+        elif file_type == FileType.CODE:
+            file_types = get_enum_values(CodeType)
 
         print(f"\nCopying the files of the type `{file_type.name}` from `{from_dir}` to `{to_dir}`\n")
         for file_name in os.listdir(from_dir):
