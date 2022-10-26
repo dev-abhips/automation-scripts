@@ -1,6 +1,7 @@
 import os
-from typing import List
 from enum import Enum
+from typing import List
+
 from utils.functions import get_enum_values
 
 
@@ -68,6 +69,17 @@ class CodeType(Enum):
     JSON = "json"
 
 
+def get_file_types(file_type: FileType):
+    mapping = {
+        FileType.CODE: get_enum_values(CodeType),
+        FileType.IMAGE: get_enum_values(ImageType),
+        FileType.AUDIO: get_enum_values(AudioType),
+        FileType.VIDEO: get_enum_values(VideoType),
+        FileType.DOCUMENT: get_enum_values(DocumentType),
+    }
+    return mapping.get(file_type)
+
+
 class FileUtils:
     def copy_files_to_destination(self, from_dir: str, to_dir: str, file_type: FileType) -> bool:
         if not self.is_path_existing(from_dir):
@@ -78,18 +90,7 @@ class FileUtils:
             print(f"Wrong file_type {str(file_type)}")
             return False
 
-        file_types = []
-        if file_type == FileType.IMAGE:
-            file_types = get_enum_values(ImageType)
-        elif file_type == FileType.AUDIO:
-            file_types = get_enum_values(AudioType)
-        elif file_type == FileType.VIDEO:
-            file_types = get_enum_values(VideoType)
-        elif file_type == FileType.DOCUMENT:
-            file_types = get_enum_values(DocumentType)
-        elif file_type == FileType.CODE:
-            file_types = get_enum_values(CodeType)
-
+        file_types = get_file_types(file_type)
         print(f"\nCopying the {file_type.name} files from `{from_dir}` to `{to_dir}`\n")
         for file_name in os.listdir(from_dir):
             old_f = os.path.join(from_dir, file_name)

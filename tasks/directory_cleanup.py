@@ -1,6 +1,7 @@
 import os
+
 from base.task import BaseTask
-from utils.file_utils import FileUtils, FileType
+from utils.file_utils import FileType, FileUtils
 
 
 class DirectoryCleanupTask(BaseTask):
