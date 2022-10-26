@@ -13,7 +13,6 @@ class DirectoryCleanupTask(BaseTask):
         self.picture_dir = os.path.expanduser("~/Pictures/temp")
         self.document_dir = os.path.expanduser("~/Documents/temp")
 
-
     def get_param_values(self):
         directory = input("\nGive the path from the home directory: ")
         self.from_dir = os.path.expanduser(f"~/{directory}")
@@ -21,8 +20,28 @@ class DirectoryCleanupTask(BaseTask):
 
     def run(self):
         self.get_param_values()
-        self.file_utils.copy_files_to_destination(self.from_dir, self.code_dir, FileType.CODE)
-        self.file_utils.copy_files_to_destination(self.from_dir, self.audio_dir, FileType.AUDIO)
-        self.file_utils.copy_files_to_destination(self.from_dir, self.video_dir, FileType.VIDEO)
-        self.file_utils.copy_files_to_destination(self.from_dir, self.picture_dir, FileType.IMAGE)
-        self.file_utils.copy_files_to_destination(self.from_dir, self.document_dir, FileType.DOCUMENT)
+        self.file_utils.copy_files_to_destination(
+            self.from_dir,
+            self.code_dir,
+            FileType.CODE
+        )
+        self.file_utils.copy_files_to_destination(
+            self.from_dir,
+            self.audio_dir,
+            FileType.AUDIO
+        )
+        self.file_utils.copy_files_to_destination(
+            self.from_dir,
+            self.video_dir,
+            FileType.VIDEO
+        )
+        self.file_utils.copy_files_to_destination(
+            self.from_dir,
+            self.picture_dir,
+            FileType.IMAGE
+        )
+        self.file_utils.copy_files_to_destination(
+            self.from_dir,
+            self.document_dir,
+            FileType.DOCUMENT
+        )

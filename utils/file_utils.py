@@ -34,10 +34,9 @@ class VideoType(Enum):
     MP4 = "mp4"
     MKV = "mkv"
     MOV = "mov"
-    SRT = "srt" # subtitle file
+    SRT = "srt"  # subtitle file
     FLAC = "flac"
     THREEGP = "3gp"
-
 
 
 class DocumentType(Enum):
@@ -62,13 +61,11 @@ class DocumentType(Enum):
     EPUB = "epub"
 
 
-
 class CodeType(Enum):
     ISO = "iso"
     DMG = "dmg"
     XML = "xml"
     JSON = "json"
-
 
 
 class FileUtils:
@@ -93,7 +90,7 @@ class FileUtils:
         elif file_type == FileType.CODE:
             file_types = get_enum_values(CodeType)
 
-        print(f"\nCopying the files of the type `{file_type.name}` from `{from_dir}` to `{to_dir}`\n")
+        print(f"\nCopying the {file_type.name} files from `{from_dir}` to `{to_dir}`\n")
         for file_name in os.listdir(from_dir):
             old_f = os.path.join(from_dir, file_name)
             new_f = os.path.join(to_dir, file_name)
@@ -103,8 +100,8 @@ class FileUtils:
 
     def check_file_type(self, file_name: str, file_types: List) -> bool:
         for file_type in file_types:
-                if file_name.lower().endswith(file_type):
-                    return True
+            if file_name.lower().endswith(file_type):
+                return True
         return False
 
     def is_path_existing(self, path: str) -> bool:
