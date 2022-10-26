@@ -22,11 +22,11 @@ class Choice(Enum):
 
 def main() -> None:
     choices: dict = Choice.get_menu()
-    menu_choice = int(input("Enter the choice of action: "))
-    print(f"\nYou have chosen the task `{convert_string_to_sentence(choices.get(menu_choice))}`.")
-    if menu_choice == Choice.MANIPULATE_DUPLICATE.value:
+    choice: int = int(input("Enter the choice of action: "))
+    print(f"\nYou have chosen the task `{convert_string_to_sentence(choices.get(choice)), '_'}`.")
+    if choice == Choice.MANIPULATE_DUPLICATE.value:
         task = DuplicateDetectorTask()
-    elif menu_choice == Choice.CLEANUP_DIRECTORY.value:
+    elif choice == Choice.CLEANUP_DIRECTORY.value:
         task = DirectoryCleanupTask()
     task.run()
     print("\n------------------------------\n")
